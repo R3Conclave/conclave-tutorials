@@ -4,13 +4,13 @@ plugins {
 }
 
 application {
-    mainClassName = "com.r3.conclave.sample.client.ReverseClient"
+    mainClass.set("com.r3.conclave.sample.client.ReverseClient")
 }
 
 dependencies {
     implementation "com.r3.conclave:conclave-web-client:$conclaveVersion"
 
-    runtimeOnly "org.slf4j:slf4j-simple:1.7.32"
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.36'
 }
 
 shadowJar {
