@@ -1,12 +1,7 @@
 plugins {
     id 'java'
-    id 'application'
-    id 'org.springframework.boot' version '2.6.1'
-}
-
-application {
-    // conclave-web-host provides us with the main method to use.
-    mainClass.set("com.r3.conclave.host.web.EnclaveWebHost")
+    id 'org.springframework.boot' version '2.7.4'
+    id "io.spring.dependency-management" version "1.1.0"
 }
 
 // Override the default (mock) with -PenclaveMode=
@@ -25,12 +20,17 @@ dependencies {
     // conclave-web-client library.
     runtimeOnly "com.r3.conclave:conclave-web-host:$conclaveVersion"
 
+    // Change this to your preferred logging framework
+    runtimeOnly 'ch.qos.logback:logback-classic'
+
     // Enable unit tests
     testImplementation "com.r3.conclave:conclave-host:$conclaveVersion"
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 }
 
 bootJar {
+    // conclave-web-host provides us with the main method to use.
+    mainClass.set("com.r3.conclave.host.web.EnclaveWebHost")
     // Include the enclave mode in the filename for clarity.
     archiveClassifier.set(mode)
 }
