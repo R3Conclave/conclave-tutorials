@@ -28,9 +28,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 }
 
-bootJar {
-    // conclave-web-host provides us with the main method to use.
+springBoot {
+    // Use the provided main method for the web host.
     mainClass.set("com.r3.conclave.host.web.EnclaveWebHost")
+}
+
+bootJar {
     // Include the enclave mode in the filename for clarity.
     archiveClassifier.set(mode)
 }
