@@ -36,6 +36,8 @@ public class ReverseEnclave extends Enclave {
         final var reversedEncodedString = reverse(stringToReverse).getBytes();
         // Get the post office object for responding back to this mail and use it to encrypt our response.
         final var responseBytes = postOffice(mail).encryptMail(reversedEncodedString);
-        postMail(responseBytes, routingHint);
+        throw new RuntimeException("Error");
+
+       // postMail(responseBytes, routingHint);
     }
 }

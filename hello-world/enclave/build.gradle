@@ -7,17 +7,18 @@ dependencies {
 }
 
 conclave {
-    productID = 1
-    revocationLevel = 0
-
+    productID = 3
+    revocationLevel = 4
+    runtime=gramine
+    buildInDocker = true
     simulation {
         signingType = privateKey
-        signingKey = file("../signing/sample_private_key.pem")
+        signingKey = file("signing/sample_private_key.pem")
     }
 
     debug {
         signingType = privateKey
-        signingKey = file("../signing/sample_private_key.pem")
+        signingKey = file("signing/sample_private_key.pem")
     }
 
     release {

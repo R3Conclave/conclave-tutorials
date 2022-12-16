@@ -19,6 +19,11 @@ subprojects {
         // This repo is only for the master branch, and must be not present in release/* branches.
         maven {
             name = "R3 artifactory"
+            url = "/home/marco/conclave-core-sdk/build/repo"
+        }
+
+        maven {
+            name = "R3 artifactory"
             url = "https://software.r3.com/artifactory/conclave-maven"
         }
         mavenCentral()
