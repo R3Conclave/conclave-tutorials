@@ -10,7 +10,7 @@ conclave {
     productID = 3
     revocationLevel = 4
     runtime=gramine
-    buildInDocker = true
+    buildInDocker=true
     simulation {
         signingType = privateKey
         signingKey = file("signing/sample_private_key.pem")
