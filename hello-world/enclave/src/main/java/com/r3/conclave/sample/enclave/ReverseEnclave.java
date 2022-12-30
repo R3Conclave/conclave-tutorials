@@ -3,6 +3,11 @@ package com.r3.conclave.sample.enclave;
 import com.r3.conclave.enclave.Enclave;
 import com.r3.conclave.mail.EnclaveMail;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Paths;
+
 /**
  * Simply reverses the bytes that are passed in.
  */
@@ -29,6 +34,16 @@ public class ReverseEnclave extends Enclave {
 
     @Override
     protected void receiveMail(EnclaveMail mail, String routingHint) {
+
+        byte[] strToBytes = "Test".getBytes();
+        try {
+            FileOutputStream outputStream = new FileOutputStream("/test.txt");
+
+            outputStream.write(strToBytes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         // This is used when the host delivers a message from the client.
         // First, decode mail body as a String.
         final var stringToReverse = new String(mail.getBodyAsBytes());
@@ -36,8 +51,6 @@ public class ReverseEnclave extends Enclave {
         final var reversedEncodedString = reverse(stringToReverse).getBytes();
         // Get the post office object for responding back to this mail and use it to encrypt our response.
         final var responseBytes = postOffice(mail).encryptMail(reversedEncodedString);
-        throw new RuntimeException("Error");
-
-       // postMail(responseBytes, routingHint);
+        postMail(responseBytes, routingHint);
     }
 }
