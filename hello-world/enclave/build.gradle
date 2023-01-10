@@ -9,8 +9,6 @@ dependencies {
 conclave {
     productID = 1
     revocationLevel = 0
-    useInternalDockerRegistry = true
-
     simulation {
         signingType = privateKey
         signingKey = file("../signing/sample_private_key.pem")
@@ -27,7 +25,7 @@ conclave {
         //  ./gradlew prepareForSigning -PenclaveMode="Release"
         //
         // Generate a signature from the signing material. The password for the sample external key is '12345'
-        //  openssl dgst -sha256 -out signing/signature.bin -sign signing/external_signing_private.pem -keyform PEM enclave/build/enclave/Release/signing_material.bin
+        //  openssl dgst -sha256 -out signing/signature.bin -sign signing/external_signing_private.pem -keyform PEM enclave/build/enclave/release/signing_material.bin
         //
         // Finally build the signed enclave:
         //  ./gradlew :host:bootJar -PenclaveMode="Release"
